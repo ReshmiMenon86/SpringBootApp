@@ -1,0 +1,45 @@
+1. Give this in application.properties
+spring.h2.console.enabled=true
+spring.datasource.url=jdbc:h2:mem:testdb
+spring.data.jpa.repositories.bootstrap-mode=default
+2.Run application
+3. http://localhost:8080/h2-console/login.jsp?jsessionid=8be89497ba03a968a2388c21c8ec3e8d
+4. Put this in url section "jdbc:h2:mem:testdb"
+5. Connect.
+6. Resource folder create an sql file , data sql 
+
+create tab person
+(
+    id integer not null,
+    name varchar(255) not null,
+    location varchar(255),
+    birth_date timestamp,
+    primary key(id)
+);
+7. Restart application
+8. Reconnect to H2 console and connect, Person table is created.
+9. Either you can give this query in console
+INSERT INTO PERSON
+ (ID, NAME, LOCATION, BIRTH_DATE)
+VALUES(1001,'Ranga','Hyd',sysdate());
+Select * from person
+
+But this get deleted, when app restarted.
+10. Alternatively give in sql
+INSERT INTO PERSON
+(ID, NAME, LOCATION, BIRTH_DATE)
+VALUES(1001,'Ranga','Hyd',sysdate());
+INSERT INTO PERSON
+(ID, NAME, LOCATION, BIRTH_DATE)
+VALUES(1002,'Rani','Amsterdam',sysdate());
+INSERT INTO PERSON
+(ID, NAME, LOCATION, BIRTH_DATE)
+VALUES(1003,'Soorya','Kerala',sysdate());
+11. Give select * from Person in console: 3 raws updated
+12. Implemenitng JDBC using Spring(template available ie the advantage)
+13. This Program does CRUD operations.
+15. Function call for CRUD operations are made inside main application file, in run method of Commandline Runner interface.
+16. Then we have PersonJDBCDAO as @repository and Person class as model.
+17. All three are in main Java folder.
+18. Resourse folder contain data.sql, which called when application context is created.
+
